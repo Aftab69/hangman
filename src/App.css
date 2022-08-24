@@ -1,38 +1,75 @@
-.App {
-  text-align: center;
+*{
+    box-sizing: border-box;
+}
+.headingContainer{
+    width: 100%;
+    min-height: 10vh;
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Josefin Sans', sans-serif;
+}
+.headingContainer>p{
+    font-size: 1.25rem;
+}
+.mainContainer{
+    display: flex;
+    flex-direction: row;
+}
+.imageContainerBox{
+    border: 1px solid red;
+    width: 50%;
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.interfaceContainerBox{
+    border: 1px solid red;
+    width: 50%;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.outcomeBox{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+}
+.eachBoxOfOutcomeBox{
+    border: 1px solid black;
+    min-width: 30px;
+    min-height: 30px;
+    margin: 10px;
+    padding: 10px;
+}
+.guessingBox{
+    width: 80%;
+}
+.guessingBox>button{
+    border: none;
+    border-radius: 5px;
+    background: black;
+    color: white;
+    margin: 10px;
+    padding: 10px;
+}
+.guessingBox>button:hover{
+    cursor: pointer;
+    background: rgb(20, 20, 20);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@media only screen and (min-width: 1921px) and (max-width:2880px){
+    .headingContainer>p{
+        font-size: 1.85rem;
+    }
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@media only screen and (min-width:2881px){
+    .headingContainer>p{
+        font-size: 2.5rem;
+    }
 }
