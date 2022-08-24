@@ -9,9 +9,10 @@ import image5 from "./Images/5.jpg";
 import image6 from "./Images/6.jpg";
 
 function App() {
-  const [ word, setWord ] = useState("guess")
+  const [ word, setWord ] = useState("")
   const [ errorcounter, setErrorcounter ] = useState(0)
   const [ image, setImage ] = useState(image0)
+  let [ guesscount, setGuesscount ] = useState(0)
   const fetchWord = async() =>{
     const response = await fetch("https://random-word-api.herokuapp.com/word")
     const data = await response.json()
@@ -20,7 +21,6 @@ function App() {
   useEffect(()=>{
     fetchWord();
   },[])
-  console.log(word)
 
   let lettersArray = [];
   if(word){
@@ -28,14 +28,15 @@ function App() {
       lettersArray.push(((word[0])[i]).toUpperCase());
     }
   }
-  console.log(lettersArray)
 
   const alpha = Array.from(Array(26)).map((e, i) => i + 65);
   const alphabet = alpha.map((x) => String.fromCharCode(x));
 
   const handleclick = (e) =>{
     e.preventDefault();
-    if(lettersArray.includes(e.target.name)===false){
+    document.getElementById(e.target.id).style.background = "#34495e";
+    document.getElementById(e.target.id).disabled = true;
+    if(lettersArray.includes(e.target.id)===false){
       if(errorcounter===0){
         setErrorcounter(1)
         setImage(image1)
@@ -56,7 +57,23 @@ function App() {
         setImage(image6)
         setTimeout(alertFunc,1);
         function alertFunc() {
-          alert("YOU LOSE !!!!!");
+          alert(`YOU LOSE !!!  ---> The word is "${word[0].toUpperCase()}"`);
+          window.location.reload();
+        }
+      }
+    }
+    if(lettersArray.includes(e.target.id)===true){
+      const getLetter = e.target.id
+      const paraArray = document.getElementsByName(getLetter)
+      for(let i=0;i<paraArray.length;i++){
+        paraArray[i].style.display = "block"
+      }
+      setGuesscount(guesscount=guesscount+paraArray.length)
+      if(guesscount===lettersArray.length){
+        setTimeout(alertFunc,1);
+        function alertFunc() {
+          alert("YOU WIN !!!");
+          window.location.reload();
         }
       }
     }
@@ -74,15 +91,15 @@ function App() {
         </div>
         <div className="interfaceContainerBox">
           <div className="outcomeBox">
-            {lettersArray.map((eachLetter)=>(
+            {lettersArray.map((eachLetter)=>(  
               <div className="eachBoxOfOutcomeBox">
-
+                <p style={{display:"none"}} name={eachLetter}>{eachLetter}</p>
               </div>
             ))}
           </div>
           <div className="guessingBox">
               {alphabet.map((eachAlphabet)=>(
-                <button onClick={handleclick} key={eachAlphabet} name={eachAlphabet}>{eachAlphabet}</button>
+                <button onClick={handleclick} key={eachAlphabet} id={eachAlphabet}>{eachAlphabet}</button>
               ))}
           </div> 
         </div>

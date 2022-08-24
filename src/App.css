@@ -1,6 +1,9 @@
 *{
     box-sizing: border-box;
 }
+body{
+    background: #fcf0d1;
+}
 .headingContainer{
     width: 100%;
     min-height: 10vh;
@@ -17,9 +20,10 @@
 .mainContainer{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 .imageContainerBox{
-    border: 1px solid red;
     width: 50%;
     min-height: 90vh;
     display: flex;
@@ -27,28 +31,44 @@
     align-items: center;
 }
 .interfaceContainerBox{
-    border: 1px solid red;
     width: 50%;
     min-height: 90vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
 .outcomeBox{
-    width: 80%;
+    background: #bdc3c7;
+    border-radius: 10px;
+    max-width: 80%;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 10px;
 }
 .eachBoxOfOutcomeBox{
-    border: 1px solid black;
-    min-width: 30px;
-    min-height: 30px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
     margin: 10px;
     padding: 10px;
+    font-size: 1.25rem;
+    font-weight: 700;
 }
 .guessingBox{
-    width: 80%;
+    background: #bdc3c7;
+    border-radius: 10px;
+    justify-content: center;
+    max-width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 10px;
 }
 .guessingBox>button{
     border: none;
@@ -57,6 +77,11 @@
     color: white;
     margin: 10px;
     padding: 10px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .guessingBox>button:hover{
     cursor: pointer;
@@ -64,12 +89,82 @@
 }
 
 @media only screen and (min-width: 1921px) and (max-width:2880px){
+    .imageContainerBox>img{
+        width: 300px;
+        height: auto;
+    }
+    .eachBoxOfOutcomeBox{
+        width: 45px;
+        height: 45px;
+        margin: 15px;
+        padding: 15px;
+        font-size: 1.9rem;
+    }
+    .guessingBox>button{
+        width: 60px;
+        height: 60px;
+        margin: 15px;
+        padding: 15px;
+        font-size: 1.5rem;
+    }
     .headingContainer>p{
         font-size: 1.85rem;
     }
 }
 @media only screen and (min-width:2881px){
+    .imageContainerBox>img{
+        width: 400px;
+        height: auto;
+    }
+    .eachBoxOfOutcomeBox{
+        width: 60px;
+        height: 60px;
+        margin: 20px;
+        padding: 20px;
+        font-size: 2.5rem;
+    }
+    .guessingBox>button{
+        width: 60px;
+        height: 60px;
+        margin: 20px;
+        padding: 20px;
+        font-size: 2rem;
+    }
     .headingContainer>p{
         font-size: 2.5rem;
+    }
+}
+@media only screen and (min-width:481px) and (max-width:1023px){
+    .imageContainerBox>img{
+        width: 150px;
+        height: auto;
+    }
+    .mainContainer{
+        flex-direction: column;
+    }
+    .imageContainerBox{
+        width: 100%;
+        min-height: 40vh;
+    }
+    .interfaceContainerBox{
+        width: 100%;
+        min-height: 40vh;
+    }
+}
+@media only screen and (max-width:480px){
+    .imageContainerBox>img{
+        width: 100px;
+        height: auto;
+    }
+    .mainContainer{
+        flex-direction: column;
+    }
+    .imageContainerBox{
+        width: 100%;
+        min-height: 30vh;
+    }
+    .interfaceContainerBox{
+        width: 100%;
+        min-height: 40vh;
     }
 }
